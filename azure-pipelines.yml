@@ -1,10 +1,10 @@
 trigger:
   - '*'
   
-  variables:
+variables:
     buildConfiguration: 'Release'
   
-  stages:
+stages:
   - stage: 'Build'
     displayName: 'Build the web application'
     jobs: 
