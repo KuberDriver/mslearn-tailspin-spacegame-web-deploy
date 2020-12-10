@@ -76,7 +76,7 @@ stages:
     - task: Anchore@0
       inputs:
         image: '$(image_name):$(tag)'
-        dockerfile: '**/Dockerfile'
+        dockerfile: 'Dockerfile'
         debug: true
 
     - script: |
