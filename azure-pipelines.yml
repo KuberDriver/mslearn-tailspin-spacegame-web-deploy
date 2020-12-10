@@ -3,6 +3,8 @@ trigger:
 
 variables:
   buildConfiguration: 'Release'
+  image_name: "localbuild/testimage"
+  tag: "ci"
 
 stages:
 - stage: 'Build'
@@ -64,3 +66,9 @@ stages:
 
     - publish: '$(Build.ArtifactStagingDirectory)'
       artifact: drop
+    
+    - task: Docker@2
+      inputs:
+        command: build
+        repository: "$(image_name)"
+        tags: "$(tag)"
