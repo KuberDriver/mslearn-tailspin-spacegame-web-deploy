@@ -77,7 +77,7 @@ stages:
       inputs:
         image: '$(image_name):$(tag)'
         dockerfile: '**/Dockerfile'
-        customPolicyPath: '.anchore/policy.json'
+        debug: true
 
     - script: |
         echo $(policyStatus)
