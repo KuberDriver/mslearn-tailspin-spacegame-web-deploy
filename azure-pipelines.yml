@@ -72,3 +72,17 @@ stages:
         command: build
         repository: "$(image_name)"
         tags: "$(tag)"
+
+    - task: Anchore@0
+      inputs:
+        image: '$(image_name):$(tag)'
+        dockerfile: '**/Dockerfile'
+        customPolicyPath: '.anchore/policy.json'
+
+    - script: |
+        echo $(policyStatus)
+        echo $(billOfMaterials)
+        cat $(billOfMaterials)
+        echo $(vulnerabilities)
+        cat $(vulnerabilities)
+      displayName: Print scan artifacts
